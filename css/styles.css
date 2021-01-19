@@ -14,10 +14,3 @@
 .product-card__name--not-available::before {
   background-color: tomato;
 }
-
-/* task-3 */
-/* использую id вместо класса потому что "1. Разметку менять НЕЛЬЗЯ." (c) Alona */
-#gallery {
-  border-color: red;
-  border-style: solid;
-}
