@@ -60,7 +60,7 @@ const product = {
   available: true,
 };
 
-const containerCardRef = document.createElement('div'); // создан контейнер 
+const containerCardRef = document.createElement('div'); // создан контейнер
 containerCardRef.classList.add('product-card');
 console.log(containerCardRef);
 
@@ -81,7 +81,7 @@ console.log(priceCardRef);
 // containerCardRef.appendChild(titleCardRef);
 // containerCardRef.appendChild(descrCardRef);
 // containerCardRef.appendChild(priceCardRef);
-// или 
+// или
 containerCardRef.append(titleCardRef, descrCardRef, priceCardRef);
 
 // добавляем в DOM
