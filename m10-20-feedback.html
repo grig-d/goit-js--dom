@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+    <style>
+      .feedback-form {
+        width: 480px;
+      }
+
+      .feedback-form > label {
+        width: 100%;
+        margin-bottom: 16px;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .feedback-form input,
+      .feedback-form textarea {
+        font: inherit;
+        padding: 8px;
+      }
+
+      .feedback-form textarea {
+        resize: none;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="./index.html">Index</a><br /><br />
+    <h1>m10-20-feedback</h1>
+
+    <form class="feedback-form js-feedback-form">
+      <label>
+        <b>Имя</b>
+        <input
+          type="text"
+          name="name"
+          placeholder="Введите Ваше имя"
+          value="Анонимус"
+        />
+      </label>
+      <label>
+        <b>Сообщение</b>
+        <textarea name="message" rows="6"></textarea>
+      </label>
+      <button type="submit">Оставить отзыв</button>
+    </form>
+
+    <script src="./js/m10-20-feedback.js" type="module"></script>
+  </body>
+</html>
