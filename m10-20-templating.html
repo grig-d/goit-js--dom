@@ -9,7 +9,18 @@
     <a href="./index.html">Index</a><br /><br />
     <h1>m10-20-templating</h1>
 
-    <ul class="gallery js-gallery"></ul>
+    <ul class="gallery js-gallery">
+      insertAdjacentHTML
+    </ul>
+
+    <ul class="gallery js-gallery-handlebars">
+      oldSchool handlebarsjs by CDN without webpack
+    </ul>
+    <template id="list-item">
+      {{#each items}}
+      <li><a href="">{{this}}</a></li>
+      {{/each}}
+    </template>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
     <script src="./js/m10-20-templating.js" type="module"></script>
