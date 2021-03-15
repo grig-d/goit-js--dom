@@ -2,6 +2,7 @@ import galleryItems from './gallery-items.js';
 
 const refs = {
   galleryList: document.querySelector('.js-gallery'),
+  lightbox: document.querySelector('.js-lightbox'),
 };
 
 const galleryMarkup = galleryItems.map(object => {
@@ -23,18 +24,19 @@ const galleryMarkup = galleryItems.map(object => {
 refs.galleryList.append(...galleryMarkup);
 console.log(galleryMarkup);
 
-// Реализация делегирования на галерее ul.js-gallery и получение url большого изображения.
+
 let urlValue;
 
 refs.galleryList.addEventListener('click', event => {
   event.preventDefault();
   if (event.currentTarget !== event.target) {
       urlValue = event.target.dataset.source;
+      refs.lightbox.classList.add('is-open');
   }
 });
 
 
-// Открытие модального окна по клику на элементе галереи.
+
 
 // Подмена значения атрибута src элемента img.lightbox__image.
 
@@ -69,3 +71,7 @@ refs.galleryList.addEventListener('click', event => {
   </a>
 </li>;
 */
+
+// Реализация делегирования на галерее ul.js-gallery и получение url большого изображения.
+
+// Открытие модального окна по клику на элементе галереи.
