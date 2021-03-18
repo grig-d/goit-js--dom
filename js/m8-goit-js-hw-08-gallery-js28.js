@@ -8,7 +8,7 @@ const refs = {
   overlay: document.querySelector('div.lightbox__overlay'),
 };
 
-const galleryMarkup = galleryItems.map(object => {
+const galleryMarkup = galleryItems.map((object, index) => {
   const item = document.createElement('li');
   item.classList.add('gallery__item');
   const link = document.createElement('a');
@@ -18,6 +18,7 @@ const galleryMarkup = galleryItems.map(object => {
   image.classList.add('gallery__image');
   image.setAttribute('src', object.preview);
   image.setAttribute('data-source', object.original);
+  image.setAttribute('data-index', index);
   image.setAttribute('alt', object.description);
   link.appendChild(image);
   item.appendChild(link);
@@ -27,36 +28,61 @@ const galleryMarkup = galleryItems.map(object => {
 refs.galleryList.append(...galleryMarkup);
 
 let urlValue;
+let currentIndex;
 
 refs.galleryList.addEventListener('click', event => {
   event.preventDefault();
   if (event.currentTarget !== event.target) {
     urlValue = event.target.dataset.source;
     refs.lightboxImage.src = urlValue;
-    console.log(urlValue);
+    currentIndex = Number(event.target.dataset.index);
     refs.lightbox.classList.add('is-open');
-    window.addEventListener('keydown', closeLightbox);
+    window.addEventListener('keydown', escCloseLightbox);
+    window.addEventListener('keydown', arrowCarousel);
   }
 });
 
 function closeLightbox() {
   refs.lightbox.classList.remove('is-open');
   refs.lightboxImage.src = '';
-  window.removeEventListener('keydown', closeLightbox);
+  window.removeEventListener('keydown', escCloseLightbox);
+  window.removeEventListener('keydown', arrowCarousel);
+}
+
+function escCloseLightbox(event) {
+  if (event.code === 'Escape') {
+    closeLightbox();
+  }
+}
+
+function arrowCarousel(event) {
+  if (event.code === 'ArrowLeft') {
+    if (currentIndex === 0) {
+      closeLightbox();
+      return;
+    }
+    currentIndex--;
+    updateImage();
+  }
+  if (event.code === 'ArrowRight') {
+    if (currentIndex === [...galleryItems].length - 1) {
+      closeLightbox();
+      return;
+    }
+    currentIndex++;
+    updateImage();
+  }
+}
+
+function updateImage() {
+  refs.lightboxImage.src = document.querySelector(
+    `img[data-index="${currentIndex}"]`,
+  ).dataset.source;
 }
 
 refs.closeLightbox.addEventListener('click', closeLightbox);
 
 refs.overlay.addEventListener('click', closeLightbox);
-
-//
-
-window.addEventListener('keydown', () => console.log(event));
-
-// ArrowLeft ArrowRight
-
-
-// Пролистывание изображений галереи в открытом модальном окне клавишами "влево" и "вправо"
 
 // Task ------------------------------------------------------------------------
 
@@ -95,3 +121,5 @@ window.addEventListener('keydown', () => console.log(event));
 // Закрытие модального окна по клику на div.lightbox__overlay
 
 // Закрытие модального окна по нажатию клавиши ESC
+
+// Пролистывание изображений галереи в открытом модальном окне клавишами "влево" и "вправо"
