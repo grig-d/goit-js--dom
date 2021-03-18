@@ -22,8 +22,6 @@ const galleryMarkup = galleryItems.map(object => {
 });
 
 refs.galleryList.append(...galleryMarkup);
-console.log(galleryMarkup);
-
 
 let urlValue;
 
@@ -34,6 +32,8 @@ refs.galleryList.addEventListener('click', event => {
       refs.lightbox.classList.add('is-open');
   }
 });
+
+
 
 
 
