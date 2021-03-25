@@ -131,12 +131,9 @@ const menu = [
 
 const menuListRef = document.querySelector('ul.js-menu');
 
-const tech = { items: ['HTML', 'CSS', 'JS', 'React'] };
-
 const templateRef = document.querySelector('#list-item').innerHTML.trim();
 const templateCompile = Handlebars.compile(templateRef);
-const markup = menu.map(item => templateCompile(item)).join('');
-console.log(markup);
+const markup = templateCompile(menu);
 menuListRef.insertAdjacentHTML('beforeend', markup);
 
 // Используя шаблонизатор Handlebars создай шаблон одного элемента меню
