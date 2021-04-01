@@ -17,11 +17,11 @@
         height: 100%;
         max-width: 400px;
         transform: translateX(-100%);
-        transition: transform 0.4s;
+        /* transition: transform 0.4s; // need to remove transition if we use gsap */
       }
-      .side-bar.active {
+      /* .side-bar.active {
         transform: translateX(0);
-      }
+      } */
       .side-bar__nav {
         display: flex;
         flex-direction: column;
@@ -100,6 +100,7 @@
       </aside>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
     <script src="./js/m10-19-gsap-by-venik.js" type="module"></script>
   </body>
 </html>
