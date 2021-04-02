@@ -42,3 +42,8 @@ burgerRef.addEventListener('click', openSideBar);
 closeButtonRef.addEventListener('click', closeSideBar);
 
 // 1-55
+
+const isSideBarOpen = localStorage.getItem('isOpen');
+if (isSideBarOpen) {
+  openSideBar();
+}
