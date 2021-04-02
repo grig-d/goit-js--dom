@@ -49,5 +49,3 @@ console.log(isSideBarOpen);
 if (isSideBarOpen) {
   openSideBar();
 }
-
-// 2-08
