@@ -5,6 +5,7 @@ const sideBarLinksRef = sideBarRef.querySelectorAll('.side-bar__link');
 
 const openSideBar = () => {
   // sideBarRef.classList.add('active'); // don't need if we use gsap
+  localStorage.setItem('isOpen', true);
   gsap.set(sideBarLinksRef, { x: -20, opacity: 0 });
   const timeline = gsap.timeline();
   timeline.to(sideBarRef, { x: 0, duration: 0.4 }).to(sideBarLinksRef, {
@@ -19,6 +20,7 @@ const openSideBar = () => {
 
 const closeSideBar = () => {
   // sideBarRef.classList.remove('active'); // don't need if we use gsap
+  localStorage.setItem('isOpen', false);
   const timeline = gsap.timeline();
   timeline
     .to(sideBarLinksRef, {
@@ -41,9 +43,11 @@ const closeOnEscape = event => {
 burgerRef.addEventListener('click', openSideBar);
 closeButtonRef.addEventListener('click', closeSideBar);
 
-// 1-55
+const isSideBarOpen = JSON.parse(localStorage.getItem('isOpen'));
+console.log(isSideBarOpen);
 
-const isSideBarOpen = localStorage.getItem('isOpen');
 if (isSideBarOpen) {
   openSideBar();
 }
+
+// 2-08
