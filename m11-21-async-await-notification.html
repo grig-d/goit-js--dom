@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+    <style>
+      .alert {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        margin: 0;
+        background-color: #fff;
+        color: #2a2a2a;
+        border: 1px solid #2a2a2a;
+        border-radius: 3px;
+        padding: 24px;
+        user-select: none;
+        cursor: pointer;
+
+        transform: translateX(calc(100% + 20px));
+        visibility: hidden;
+        opacity: 0;
+        transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .alert.success {
+        border: 1px solid #388e3c;
+        background-color: #4caf50;
+        color: #fff;
+      }
+
+      .alert.is-visible {
+        transform: translateX(0);
+        visibility: visible;
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="./index.html">Index</a><br /><br />
+    <h1>async-await-notification</h1>
+
+    <p class="alert success js-alert">Операция проведена успешно!</p>
+
+    <script src="./js/m11-21-async-await-notification.js" type="module"></script>
+  </body>
+</html>
