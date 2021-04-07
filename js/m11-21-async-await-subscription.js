@@ -33,6 +33,5 @@ function openModal() {
   setTimeout(() => {
     modal.show();
     promptCounter += 1;
-    console.log(promptCounter);
   }, PROMPT_DELAY);
 }
