@@ -4,17 +4,19 @@ const refs = {
   clockface: document.querySelector('.js-clockface'),
 };
 
-refs.startBtn.addEventListener('click', () => {
-  timer.start();
-});
+class Timer {
+  constructor({ onTick }) {
+    this.intervalId = null;
+    this.isActive = false;
+    this.onTick = onTick;
+    this.init();
+  }
 
-refs.stopBtn.addEventListener('click', () => {
-  timer.stop();
-});
+  init() {
+    const time = this.getTimeComponents(0);
+    this.onTick(time);
+  }
 
-const timer = {
-  intervalId: null,
-  isActive: false,
   start() {
     if (this.isActive) {
       return;
@@ -24,29 +26,37 @@ const timer = {
     this.intervalId = setInterval(() => {
       const currentTime = Date.now();
       const deltaTime = currentTime - startTime;
-      const time = getTimeComponents(deltaTime);
-      updateClockface(time);
+      const time = this.getTimeComponents(deltaTime);
+      this.onTick(time);
     }, 1000);
-  },
+  }
+
   stop() {
     clearInterval(this.intervalId);
     this.isActive = false;
-  },
-};
+    this.init();
+  }
 
-function pad(value) {
-  return String(value).padStart(2, '0');
+  getTimeComponents(time) {
+    const hours = this.pad(
+      Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+    );
+    const mins = this.pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
+    const secs = this.pad(Math.floor((time % (1000 * 60)) / 1000));
+
+    return { hours, mins, secs };
+  }
+
+  pad(value) {
+    return String(value).padStart(2, '0');
+  }
 }
 
-function getTimeComponents(time) {
-  const hours = pad(
-    Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-  );
-  const mins = pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
-  const secs = pad(Math.floor((time % (1000 * 60)) / 1000));
 
-  return { hours, mins, secs };
-}
+const timer = new Timer({ onTick: updateClockface });
+
+refs.startBtn.addEventListener('click', timer.start.bind(timer));
+refs.stopBtn.addEventListener('click', timer.stop.bind(timer));
 
 function updateClockface({ hours, mins, secs }) {
   refs.clockface.textContent = `${hours}:${mins}:${secs}`;
