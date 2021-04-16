@@ -18,6 +18,22 @@ function onRejected(error) {
   console.log(error);
 }
 
-
 // promisification
+// "keywords": "#FA842B",
+// "types": "#DDA0DD", // RAL 2003
 
+const fetchPokemonById = id => {
+  return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(r => r.json());
+};
+
+fetchPokemonById(1).then(onFetchSuccess).catch(onFetchError);
+
+function onFetchSuccess(pokemon) {
+  console.log('onFetchSuccess -> onFetchSuccess');
+  console.log(pokemon);
+}
+
+function onFetchError(error) {
+  console.log('onFetchError -> onFetchError');
+  console.log(error);
+}
