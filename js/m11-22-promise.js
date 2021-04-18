@@ -17,20 +17,19 @@
 // function onRejected(error) {
 //   console.log(error);
 // }
-////////
-// // promisification
-// const fetchPokemonById = id => {
-//   return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(r => r.json());
-// };
+//////// promisification
+const fetchPokemonById = id => {
+  return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(r => r.json());
+};
 
-// fetchPokemonById(1).then(onFetchSuccess).catch(onFetchError);
+fetchPokemonById(1).then(onFetchSuccess).catch(onFetchError);
 
-// function onFetchSuccess(pokemon) {
-//   console.log('onFetchSuccess -> onFetchSuccess');
-//   console.log(pokemon);
-// }
+function onFetchSuccess(pokemon) {
+  console.log('onFetchSuccess -> onFetchSuccess');
+  console.log(pokemon);
+}
 
-// function onFetchError(error) {
-//   console.log('onFetchError -> onFetchError');
-//   console.log(error);
-// }
+function onFetchError(error) {
+  console.log('onFetchError -> onFetchError');
+  console.log(error);
+}

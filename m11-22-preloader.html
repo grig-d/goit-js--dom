@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+    <style>
+      .preloader {
+        background-color: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .preloader__icon {
+        width: 50px;
+        height: 50px;
+        border: 2px solid purple;
+        animation: preloader 3s infinite;
+      }
+      @keyframes preloader {
+        0% {
+          border-radius: 0;
+          transform: rotate(0);
+        }
+        50% {
+          border-radius: 50%;
+          transform: rotate(720deg);
+        }
+                100% {
+          border-radius: 0;
+          transform: rotate(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="./index.html">Index</a><br /><br />
+
+    <div class="preloader">
+      <div class="preloader__icon"></div>
+    </div>
+
+    <img
+      class="photo"
+      data-src="https://images.unsplash.com/photo-1568821387885-6101eb49c64d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1718&q=80"
+      src="https://images.unsplash.com/photo-1568821387885-6101eb49c64d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1718&q=80"
+      alt=""
+    />
+
+    <script src="./js/m11-22-preloader.js" type="module"></script>
+  </body>
+</html>
