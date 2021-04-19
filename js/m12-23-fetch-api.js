@@ -53,5 +53,3 @@ function onSearch(event) {
       .finally(form.reset());
   }
 }
-
-// 1-29-22
