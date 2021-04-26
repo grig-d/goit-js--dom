@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.5;
+        color: #2a2a2a;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      .js-container {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="./index.html">Index</a><br /><br />
+
+    <input type="text" id="theme-input" value="cyberpunk">
+    <label for="number-input">Photo number:</label>
+    <input type="number" id="number-input" name="number-input" min="1" max="1000" value="1"/>
+    <button id="search">Search</button>
+
+    <div class="js-container"></div>
+
+    <script src="./js/m12-24-rest-paginate.js" type="module"></script>
+  </body>
+</html>
