@@ -11,16 +11,23 @@ let theme;
 let page;
 
 refs.searchBtn.addEventListener('click', () => {
-  // page = refs.inputNumber.value % 20;
-  // console.log(page);
-  index = refs.inputNumber.value % 20 - 0;
-  console.log(index);
-  //
+  page = Math.floor((refs.inputNumber.value - 1) / 20);
+  index = refs.inputNumber.value - 1 - page * 20;
+  // console.log(
+  //   'page: ',
+  //   page,
+  //   'index: ',
+  //   index,
+  //   'number: ',
+  //   refs.inputNumber.value,
+  // );
   theme = refs.inputTheme.value;
   path =
     'https://pixabay.com/api/?key=21332395-4a2076910c778f7aa83614951&q=' +
     `${theme}` +
-    '&image_type=photo';
+    '&image_type=photo' +
+    '&page=' +
+    `${page + 1}`;
   searchPhoto();
 });
 
