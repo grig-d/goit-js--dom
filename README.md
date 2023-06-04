@@ -1,1 +1,1 @@
-# js-goit-dom
+# goit-js--dom
